@@ -16,6 +16,12 @@ class Finance():
     def getBalance(self):
         return self.balance
 
+    def getAge(self):
+        return self.age
+
+    def getName(self):
+        return self.name
+
 
     def __str__(self):
         return f'Name: {self.name}\nAge: {self.age}\nBalance {self.balance}'
