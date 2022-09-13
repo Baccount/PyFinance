@@ -6,7 +6,7 @@ from functions.functions import getInput, showSplash
 
 def main():
     arg = arguments()
-    finance = Finance(arg.name, arg.age, arg.money) if arg.name and arg.money else None
+    finance = Finance(arg.name, arg.money) if arg.name and arg.money else None
     if not finance:
         showSplash()
         finance = getInput()

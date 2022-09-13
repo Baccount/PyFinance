@@ -14,7 +14,7 @@ class SaveFinances:
         self.conn = sqlite3.connect(self.db)
         self.c = self.conn.cursor()
         self.c.execute(
-            """CREATE TABLE IF NOT EXISTS finances (name text, age integer, balance integer)"""
+            """CREATE TABLE IF NOT EXISTS finances (name text, balance integer)"""
         )
         self.conn.commit()
         self.c.close()
@@ -26,7 +26,7 @@ class SaveFinances:
         self.c = self.conn.cursor()
         # check if the name is already in the database
         self.c.execute("UPDATE finances SET balance = balance + ? WHERE name = ?", (finance.getBalance(), finance.getName().lower()))
-        self.c.execute("INSERT INTO finances (name, age, balance) SELECT ?, ?, ? WHERE (SELECT Changes() = 0)", (finance.getName(), finance.getAge(), finance.getBalance()))
+        self.c.execute("INSERT INTO finances (name, balance) SELECT ?, ? WHERE (SELECT Changes() = 0)", (finance.getName(), finance.getBalance()))
         self.conn.commit()
         self.c.close()
         self.conn.close()
