@@ -3,11 +3,19 @@ class Finance():
         self.name = name
         self.age = age
         self.balance = balance
+
     def deposit(self, amount):
         self.balance += amount
-    
+
+
+    def withdraw(self, amount):
+        if self.balance >= amount:
+            self.balance -= amount
+
+
     def getBalance(self):
         return self.balance
-    
-    def withdraw(self, amount):
-        self.balance -= amount
+
+
+    def __str__(self):
+        return f'Name: {self.name}\nAge: {self.age}\nBalance {self.balance}'
