@@ -16,3 +16,4 @@ scr/argm/__pycache__/argms.cpython-310.pyc
 scr/__pycache__/__init__.cpython-310.pyc
 .gitignore
 tests/__pycache__/test_func.cpython-310-pytest-7.1.2.pyc
+scr/functions/__pycache__/functions.cpython-310.pyc

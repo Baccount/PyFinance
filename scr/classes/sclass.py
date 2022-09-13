@@ -24,10 +24,9 @@ class SaveFinances:
         # Saving the data into the database.
         self.conn = sqlite3.connect(self.db)
         self.c = self.conn.cursor()
-        self.c.execute(
-            "INSERT INTO finances VALUES (?, ?, ?)",
-            (finance.getName(), finance.getAge(), finance.getBalance()),
-        )
+        # check if the name is already in the database
+        self.c.execute("UPDATE finances SET balance = balance + ? WHERE name = ?", (finance.getBalance(), finance.getName().lower()))
+        self.c.execute("INSERT INTO finances (name, age, balance) SELECT ?, ?, ? WHERE (SELECT Changes() = 0)", (finance.getName(), finance.getAge(), finance.getBalance()))
         self.conn.commit()
         self.c.close()
         self.conn.close()

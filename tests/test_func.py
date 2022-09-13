@@ -8,6 +8,8 @@ from scr.classes.mclass import Finance
 from scr.classes.rclass import ReadFinances
 # trunk-ignore(flake8/E402)
 from scr.classes.sclass import SaveFinances
+# trunk-ignore(flake8/F401)
+from scr.argm.argms import arguments
 
 
 def test_mclass():
@@ -30,8 +32,6 @@ def test_sclass():
     SaveFinances().save(finance)
     assert os.path.exists("data.db")
     assert ReadFinances().getFinance()[0] == ("BOB", 50, 200)
-
-
 
 def delDatabase():
     os.remove("data.db")
