@@ -4,3 +4,9 @@ scr/classes/__pycache__/__init__.cpython-310.pyc
 .vscode/settings.json
 scr/classes/__pycache__/sclass.cpython-310.pyc
 data.db
+scr/classes/__pycache__/rclass.cpython-310.pyc
+.trunk/trunk.yaml
+.gitignore
+.isort.cfg
+.flake8
+.markdownlint.yaml
