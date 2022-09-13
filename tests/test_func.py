@@ -21,10 +21,15 @@ def test_rclass():
     delDatabase()
     finance = Finance("John", 20, 100)
     SaveFinances().save(finance)
-    assert ReadFinances().getFinance()[0] == ('John', 20, 100)
+    assert ReadFinances().getFinance()[0] == ("John", 20, 100)
 
 
-
+def test_sclass():
+    delDatabase()
+    finance = Finance("BOB", 50, 200)
+    SaveFinances().save(finance)
+    assert os.path.exists("data.db")
+    assert ReadFinances().getFinance()[0] == ("BOB", 50, 200)
 
 
 
