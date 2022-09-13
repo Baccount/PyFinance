@@ -10,3 +10,6 @@ scr/classes/__pycache__/rclass.cpython-310.pyc
 .isort.cfg
 .flake8
 .markdownlint.yaml
+scr/argm/argms.py
+scr/argm/__pycache__/__init__.cpython-310.pyc
+scr/argm/__pycache__/argms.cpython-310.pyc
