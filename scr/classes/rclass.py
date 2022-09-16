@@ -8,10 +8,10 @@ class ReadFinances:
     :return: The rows of the finances table.
     """
 
-    def getFinance(self):
+    def getFinance(self, name):
         self.conn = sqlite3.connect("data.db")
         self.c = self.conn.cursor()
-        self.c.execute("SELECT * FROM finances")
+        self.c.execute("SELECT * FROM finances WHERE name = ?", (name,))
         self.rows = self.c.fetchall()
         self.c.close()
         self.conn.close()

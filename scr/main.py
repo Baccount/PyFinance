@@ -5,13 +5,15 @@ from classes.sclass import SaveFinances
 from functions.functions import getInput, showSplash
 
 def main():
-    arg = arguments()
-    finance = Finance(arg.name, arg.money) if arg.name and arg.money else None
-    if not finance:
-        showSplash()
-        finance = getInput()
-    SaveFinances().save(finance)
-    print(ReadFinances().getFinance())
+    while True:
+        arg = arguments()
+        finance = Finance(arg.name, arg.money) if arg.name and arg.money else None
+        if not finance:
+            showSplash()
+            finance = getInput()
+        SaveFinances().save(finance)
+        print(ReadFinances().getFinance(finance.getName()))
+        input("Press enter to continue...")
 
 
 if __name__ == "__main__":
