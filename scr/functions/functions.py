@@ -1,10 +1,5 @@
-from classes.mclass import Finance
 from pyfiglet import Figlet
 
-def getInput():
-    name = input("Enter your name: ")
-    money = input("Enter your deposit amount: ")
-    return Finance(name, money)
 
 def showSplash():
     """
