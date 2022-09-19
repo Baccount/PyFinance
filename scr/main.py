@@ -8,9 +8,10 @@ def main():
     showSplash()
     usr = loginUsr()
     clear_screen()
-    print(purple("Welcome, " + usr.getName() + "!"))
+    print(purple("Welcome, " + usr.getName() + " you have "))
+    print(purple(str(ReadFinances().getFinance(usr.getName())[0][1]) + " $ in your account"))
     while True:
-        choice = input("1. deposit money\n2. withdraw money\n3. Show balance\n4. exit\n")
+        choice = input("1. Deposit money\n2. Withdraw money\n3. Show balance\n4. Exit\n")
         if choice == "1":
             SaveFinances().save(usr.deposit())
         # elif choice == "2":
