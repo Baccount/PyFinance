@@ -17,8 +17,13 @@ def main():
             clear_screen()
             amount = int(input("Enter the amount you want to deposit: "))
             SaveFinances().save(usr, amount)
-        # elif choice == "2":
-        #     withdraw(usr)
+        elif choice == "2":
+            # withdraw money
+            clear_screen()
+            amount = int(input("Enter the amount you want to withdraw: "))
+            blance = ReadFinances().getFinance(name)[0][1] - amount
+            print(blance)
+            SaveFinances().save(usr, -blance)
         elif choice == "3":
             print(ReadFinances().getFinance(name))
             input("Press enter to continue...")

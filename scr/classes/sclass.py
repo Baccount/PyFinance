@@ -25,8 +25,8 @@ class SaveFinances:
         self.conn = sqlite3.connect(self.db)
         self.c = self.conn.cursor()
         # check if the name is already in the database
-        self.c.execute("UPDATE finances SET balance = balance + ? WHERE name = ?", (finance.getBalance() + amount, finance.getName().lower()))
-        self.c.execute("INSERT INTO finances (name, balance) SELECT ?, ? WHERE (SELECT Changes() = 0)", (finance.getName(), finance.getBalance() + amount))
+        self.c.execute("UPDATE finances SET balance = balance + ? WHERE name = ?", (amount, finance.getName().lower()))
+        self.c.execute("INSERT INTO finances (name, balance) SELECT ?, ? WHERE (SELECT Changes() = 0)", (finance.getBalance() + amount))
         self.conn.commit()
         self.c.close()
         self.conn.close()
