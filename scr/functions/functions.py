@@ -1,7 +1,8 @@
 from classes.mclass import Finance
 from pyfiglet import Figlet
 
-def getInput():
+
+def getInput() -> Finance:
     name = input("Enter your name: ")
     money = input("Enter your deposit amount: ")
     return Finance(name, money)
@@ -21,8 +22,8 @@ def clear_screen():
     """
     Clear the screen
     """
-
     print("\033c", end="")
+
 
 def purple(text):
     """

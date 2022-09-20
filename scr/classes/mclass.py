@@ -6,19 +6,10 @@ class Finance():
     def __init__(self, name, balance):
         self.name = name
         self.balance = balance
-        self.db = "data.db"
-        self.conn = sqlite3.connect(self.db)
-        self.c = self.conn.cursor()
-        self.c.execute(
-            """CREATE TABLE IF NOT EXISTS finances (name text, balance integer)"""
-        )
-        self.conn.commit()
-        self.c.close()
-        self.conn.close()
+        self.createDB()
 
     def deposit(self, amount):
         self.balance += amount
-
 
     def withdraw(self, amount):
         if self.balance >= amount:
@@ -31,9 +22,7 @@ class Finance():
     def getName(self):
         return self.name
 
-
-
-    def getFinance(self, name):
+    def getSaved(self, name): 
         self.conn = sqlite3.connect("data.db")
         self.c = self.conn.cursor()
         self.c.execute("SELECT * FROM finances WHERE name = ?", (name,))
@@ -43,8 +32,7 @@ class Finance():
         return self.rows
 
 
-    def save(self, finance):
-        # Saving the data into the database.
+    def saveFinance(self, finance):
         self.conn = sqlite3.connect(self.db)
         self.c = self.conn.cursor()
         # check if the name is already in the database
@@ -54,7 +42,16 @@ class Finance():
         self.c.close()
         self.conn.close()
 
-
+    def createDB(self):
+        self.db = "data.db"
+        self.conn = sqlite3.connect(self.db)
+        self.c = self.conn.cursor()
+        self.c.execute(
+            """CREATE TABLE IF NOT EXISTS finances (name text, balance integer)"""
+        )
+        self.conn.commit()
+        self.c.close()
+        self.conn.close()
 
 
     def __str__(self):

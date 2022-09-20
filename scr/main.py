@@ -2,6 +2,7 @@ from argm.argms import arguments
 from classes.mclass import Finance
 from functions.functions import getInput, showSplash
 
+
 def main():
     while True:
         arg = arguments()
@@ -9,9 +10,12 @@ def main():
         if not finance:
             showSplash()
             finance = getInput()
-        SaveFinances().save(finance)
-        print(ReadFinances().getFinance(finance.getName()))
+            
         input("Press enter to continue...")
+
+def askUsr():
+    usr = input("Do you want to continue? (y/n): ")
+    return usr
 
 
 if __name__ == "__main__":
