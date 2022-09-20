@@ -1,3 +1,7 @@
+import sqlite3
+
+
+
 class Finance():
     def __init__(self, name, balance):
         self.name = name
@@ -17,6 +21,19 @@ class Finance():
 
     def getName(self):
         return self.name
+
+
+
+    def getFinance(self, name):
+        self.conn = sqlite3.connect("data.db")
+        self.c = self.conn.cursor()
+        self.c.execute("SELECT * FROM finances WHERE name = ?", (name,))
+        self.rows = self.c.fetchall()
+        self.c.close()
+        self.conn.close()
+        return self.rows
+
+
 
 
     def __str__(self):
