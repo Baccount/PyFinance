@@ -3,7 +3,7 @@ import sqlite3
 
 
 class Finance():
-    def __init__(self, name, balance):
+    def __init__(self, name, balance=0):
         self.name = name
         self.balance = balance
         self.createDB()
@@ -32,12 +32,12 @@ class Finance():
         return self.rows
 
 
-    def saveFinance(self, finance):
+    def saveFinance(self):
         self.conn = sqlite3.connect(self.db)
         self.c = self.conn.cursor()
         # check if the name is already in the database
-        self.c.execute("UPDATE finances SET balance = balance + ? WHERE name = ?", (finance.getBalance(), finance.getName().lower()))
-        self.c.execute("INSERT INTO finances (name, balance) SELECT ?, ? WHERE (SELECT Changes() = 0)", (finance.getName(), finance.getBalance()))
+        self.c.execute("UPDATE finances SET balance = balance + ? WHERE name = ?", (self.getBalance(), self.getName().lower()))
+        self.c.execute("INSERT INTO finances (name, balance) SELECT ?, ? WHERE (SELECT Changes() = 0)", (self.getName(), self.getBalance()))
         self.conn.commit()
         self.c.close()
         self.conn.close()
