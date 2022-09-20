@@ -1,7 +1,5 @@
 from argm.argms import arguments
 from classes.mclass import Finance
-from classes.rclass import ReadFinances
-from classes.sclass import SaveFinances
 from functions.functions import getInput, showSplash
 
 def main():
